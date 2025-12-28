@@ -1,0 +1,50 @@
+{
+  "collection_name": "system_docs",
+  "vectors": {
+    "size": 1024,
+    "distance": "Cosine"
+  },
+  "sparse_vectors": {
+    "text": {
+      "index": {
+        "on_disk": false
+      }
+    }
+  },
+  "payload_schema": {
+    "document_id": {
+      "type": "keyword",
+      "indexed": true
+    },
+    "chunk_id": {
+      "type": "keyword",
+      "indexed": true
+    },
+    "doc_type": {
+      "type": "keyword",
+      "indexed": true
+    },
+    "section": {
+      "type": "text"
+    },
+    "api_endpoints": {
+      "type": "keyword",
+      "is_array": true
+    },
+    "table_names": {
+      "type": "keyword",
+      "is_array": true
+    },
+    "entity_names": {
+      "type": "keyword",
+      "is_array": true
+    },
+    "tags": {
+      "type": "keyword",
+      "is_array": true
+    },
+    "created_at": {
+      "type": "datetime"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+version: '3.8'
+
+# Development overrides
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/app/src:ro
+      - ./data/uploads:/app/data/uploads
+      - ./data/models:/app/data/models
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG=true
+      - LOG_LEVEL=DEBUG
+    command: uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload
