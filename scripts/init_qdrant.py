@@ -29,8 +29,10 @@ def init_qdrant():
     if collection_name in collection_names:
         print(f"Collection '{collection_name}' already exists")
         info = client.get_collection(collection_name)
-        print(f"  Vectors count: {info.vectors_count}")
-        print(f"  Points count: {info.points_count}")
+        # Handle different qdrant-client versions
+        points = getattr(info, 'points_count', None) or getattr(info, 'indexed_vectors_count', 0)
+        print(f"  Points count: {points}")
+        print(f"  Status: {info.status}")
         return
 
     # Create collection
